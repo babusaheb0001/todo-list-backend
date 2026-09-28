@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern To-Do List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Tasks</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search tasks...">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+        </header>
+
+        <form id="todoForm" class="todo-form">
+            <input type="text" id="todoInput" placeholder="What needs to be done?" required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+
+        <ul id="todoList" class="todo-list">
+            <!-- Loading state -->
+            <li class="loading">Loading tasks...</li>
+        </ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

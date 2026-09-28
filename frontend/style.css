@@ -1,0 +1,306 @@
+:root {
+    --bg-color: #0f172a;
+    --container-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --success: #10b981;
+    --danger: #ef4444;
+    --border: #334155;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--container-bg);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.search-container {
+    position: relative;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#searchInput:focus {
+    border-color: var(--accent);
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.todo-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#todoInput {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#todoInput:focus {
+    border-color: var(--accent);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.todo-form button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent);
+    color: white;
+}
+
+.todo-form button:hover {
+    background-color: var(--accent-hover);
+}
+
+.filters {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.filter-btn {
+    padding: 0.4rem 1rem;
+    background-color: transparent;
+    color: var(--text-secondary);
+    border-radius: 20px;
+}
+
+.filter-btn:hover {
+    background-color: var(--border);
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+.error-message {
+    color: var(--danger);
+    font-size: 0.9rem;
+    display: none;
+    padding: 0.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 4px;
+}
+
+.todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s, transform 0.2s;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.todo-item:hover {
+    border-color: var(--border);
+}
+
+.todo-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.todo-item.completed .checkbox {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.todo-item.completed .checkbox::after {
+    content: '';
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-title {
+    font-size: 1rem;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.task-date {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.todo-item.completed .task-title {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    background: transparent;
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background-color: var(--border);
+}
+
+.edit-btn {
+    color: var(--text-secondary);
+}
+
+.edit-btn:hover {
+    color: var(--accent);
+}
+
+.delete-btn {
+    color: var(--text-secondary);
+}
+
+.delete-btn:hover {
+    color: var(--danger);
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.loading, .empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem 0;
+}
+
+/* Edit Mode */
+.edit-input {
+    flex: 1;
+    padding: 0.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--accent);
+    background: var(--container-bg);
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #searchInput {
+        width: 250px;
+    }
+}
